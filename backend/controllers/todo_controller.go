@@ -58,7 +58,7 @@ func GetTodos(c *gin.Context) {
 	userID := userId.(uint)
 	
 	var todos []entity.Todo
-	if err := configs.DB().Where("user_id ?", userID).Find(&todos).Error; err != nil {
+	if err := configs.DB().Where("user_id = ?", userID).Find(&todos).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to fetch todos"})
 		return
 	}

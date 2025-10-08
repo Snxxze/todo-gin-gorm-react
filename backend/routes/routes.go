@@ -17,8 +17,8 @@ func RegisterRoutes(r *gin.Engine) {
 	todo := r.Group("/todos")
 	todo.Use(middlewares.AuthMiddleware())
 	{
-		todo.GET("/", controllers.GetTodos)
-		todo.POST("/", controllers.CreateTodo)
+		todo.GET("", controllers.GetTodos)
+		todo.POST("", controllers.CreateTodo)
 		todo.PUT("/:id", controllers.UpdateTodo)
 		todo.DELETE("/:id", controllers.DeleteTodo)
 	}
